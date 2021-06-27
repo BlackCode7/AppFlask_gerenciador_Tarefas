@@ -6,7 +6,7 @@ API_HOST = '127.0.0.1'
 API_BASE_URL = '/api'
 DEBUG = True
 
-LOGIN_TESTE = ''
+LOGIN_TESTE = 'admin@admin.com'
 SENHA_TESTE = 'Admin123@'
 
 # Criando um gerador de senhas aleatórias

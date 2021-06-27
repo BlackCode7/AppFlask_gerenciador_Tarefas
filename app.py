@@ -4,7 +4,7 @@ from flask_restx import Api
 from controllers.LoginController import login_controller
 from controllers.LoginController import api as ns_login
 from controllers.LoginController import api as ns_usuario
-
+from controllers.UsuarioController import usuario_controller
 
 app = Flask(__name__)
 
@@ -18,8 +18,8 @@ api = Api(
 
 
 def register_blueprints():
-    app.register_blueprint('login_controller', url_prefix=config.API_BASE_URL)
-    app.register_blueprint('usuario_controller', url_prefix=config.API_BASE_URL + '/usuario')
+    app.register_blueprint(login_controller, url_prefix=config.API_BASE_URL)
+    app.register_blueprint(usuario_controller, url_prefix=config.API_BASE_URL + '/usuario')
 
 
 def add_namespaces():
