@@ -21,7 +21,6 @@ class Login(Resource):
     # campos esperados e necessários para api
     @api.expect(login_fields)
     def post(self):
-
         try:
             body = request.get_json()
 
@@ -51,12 +50,3 @@ class Login(Resource):
             return Response(
                 json.dumps(ErroDTO('Falha ao fazer o Login', status=400).__dict__),
                 status=500, mimetype='application/json')
-
-
-"""
-
-        if not body or "login" not in body or "senha" not in body:
-            return Response("Parametros Inválidos",
-                            status=400, mimetype='application/json')
-
-"""
