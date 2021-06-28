@@ -89,12 +89,13 @@ class usuarioController(Resource):
                 )
 
             return Response(
-                json.dumps(UsuarioCreateDTO(usuario_criado.id,
-                                            usuario_criado.nome,
-                                            usuario_criado.email,
-                                            usuario_criado.senha).__dict__),
-                                            status=201,
-                                            mimetype='application/json'
+                json.dumps(
+                    UsuarioCreateDTO(usuario_criado.id,
+                    usuario_criado.nome,
+                    usuario_criado.email,
+                    usuario_criado.senha).__dict__),
+                    status=201,
+                    mimetype='application/json'
             )
 
         except Exception:
