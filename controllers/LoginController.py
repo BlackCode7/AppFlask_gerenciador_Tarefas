@@ -24,13 +24,29 @@ class Login(Resource):
         try:
             body = request.get_json()
 
-            if not body or "login" not in body or "senha" not in body:
+            erros = []
+
+            if not body:
                 return Response(
-                    json.dumps(ErroDTO("Parâmetro de entrada inválido!", status=400).__dict__),
+                    json.dumps(ErroDTO(400, 'Body da requisição está vazio!').__dict__),
+                    status=400,
+                    mimetype='application/json'
+                )
+
+            if not "login" in body:
+                erros.append("Campo 'login' é obrigatório")
+
+            if not "senha" in body:
+                erros.append("Campo 'senhas' é obrigatório")
+
+            if erros:
+                return Response(
+                    json.dumps(ErroDTO(400, erros).__dict__),
                     status=400, mimetype='application/json')
 
             if body["login"] == config.LOGIN_TESTE and body["senha"] == config.SENHA_TESTE:
                 id_usuario = 1  # usuario mocado deve ser trocado
+
                 token = JWTService.gerar_token(id_usuario)
 
                 return Response(

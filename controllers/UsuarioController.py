@@ -6,7 +6,6 @@ from flask_restx import Namespace, Resource, fields
 from dtos.ErroDTO import ErroDTO
 from dtos.UsuarioDTO import UsuarioBaseDTO, UsuarioCreateDTO
 from services.UsuarioService import UsuarioService
-from services.UsuarioService import UsuarioService
 from utils import Decorators
 from utils.Criptografia import criptografar_senha
 
@@ -21,13 +20,13 @@ user_fields = api.model(
 )
 
 
-@api.route('/', methods=['GET'])
+@api.route('', methods=['GET', 'POST'])
 class usuarioController(Resource):
     @api.doc(responses={200: 'Login realizado com sucesso.'})
     @api.doc(responses={401: 'Token Inválido.'})
     @api.response(200, 'Success', user_fields)
     @Decorators.token_required
-    def get(self):
+    def get(usuario):
         # usuario_atual não conseguiu retornar do decorator _ Tentar resolver isso _
         try:
             return Response(
@@ -43,6 +42,7 @@ class usuarioController(Resource):
                 mimetype='application/json'
                 )
 
+    # Rota pública para cadastro de usuários
     def post(self):
         try:
             # criações no servidor
@@ -66,12 +66,15 @@ class usuarioController(Resource):
             if not "email" in body:
                 erros.append("Campo 'email' é obrigatório")
 
+            ############# CRiado AGORA ####################
             if erros:
                 return Response(
                     json.dumps(ErroDTO(400, erros).__dict__),
                     status=400,
                     imetype='application/json'
                 )
+
+            ############# CRiado AGORA ####################
 
             usuario_criado = UsuarioService().criar_usuario(body["nome"],
                                            body["email"],
