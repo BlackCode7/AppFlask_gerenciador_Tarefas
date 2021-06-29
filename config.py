@@ -18,6 +18,6 @@ SECRET_KEY = ''.join(random.choice(gen) for i in range(32))
 MYSQL_PORT = '3306'
 MYSQL_HOST = 'localhost'
 MYSQL_USER = 'root'
-MYSQL_PASSWORD = 'xG4uChuzkF2XWaCt'
+MYSQL_PASSWORD = ''
 # Nome do banco de dados
-MYSQL_DATABASE = 'Nome do banco de dados'
+MYSQL_DATABASE = 'usuario'

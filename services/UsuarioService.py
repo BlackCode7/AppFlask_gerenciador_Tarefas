@@ -1,8 +1,6 @@
-from Projeto_FlaskVete.utils.Criptografia import criptografar_senha
-
 from database.DataBase import SessionLocal
 from models.Usuario import Usuario
-from utils.Criptografia import verificar_senha
+from utils.Criptografia import verificar_senha, criptografar_senha
 
 db = SessionLocal()
 

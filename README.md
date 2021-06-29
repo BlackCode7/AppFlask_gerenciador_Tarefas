@@ -168,4 +168,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
     
 ## Parada no tempo em que assisti ao vídeo
-    video _ 3 >>> min -> 01:15:11 min >>> entrando na parte de banco de dados
+    video _ 3 >>> min -> 01:33:11 min >>> entrando na parte de banco de dados
